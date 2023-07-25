@@ -5,7 +5,7 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 SQL Queries:
 
-select
+``` select
 	country,
 	city,
 	sum(units_sold * price) as total_revenue
@@ -14,7 +14,7 @@ join all_sessions_view asv
 on av.full_visitor_id = asv.full_visitor_id
 group by country, city
 order by total_revenue desc
-limit 10
+limit 10```
 
 Answer:
 
@@ -36,7 +36,7 @@ Cities, unknown and known, occupied eight of the top 10 spots. The exceptions we
 
 SQL Queries:
 
-select
+```select
 	country,
 	city,
 	round(avg(units_sold), 0) as avg_products_ordered
@@ -46,7 +46,7 @@ on av.full_visitor_id = asv.full_visitor_id
 where units_sold > 0
 group by country, city
 order by avg(units_sold) desc
-limit 10
+limit 10```
 
 Answer:
 
@@ -69,7 +69,7 @@ The United States were popular again with the highest average number of products
 
 SQL Queries:
 
-with product_category_country as (
+```with product_category_country as (
 	select
 		country,
 		city,
@@ -90,7 +90,7 @@ select country, city, product_category, product_name, units_sold, product_rank
 from product_category_country
 where product_rank = 1
 group by country, city, product_category, product_name, units_sold, product_rank
-order by units_sold desc
+order by units_sold desc```
 
 
 
@@ -104,7 +104,7 @@ I did not notice a particular pattern within country and city perspective. There
 SQL Queries:
 
  
-with product_category_country as (
+```with product_category_country as (
 	select
 		country,
 		city,
@@ -126,7 +126,7 @@ from product_category_country
 where product_rank = 1
 group by country, city, product_category, product_name, units_sold, product_rank
 order by country desc
-limit 10
+limit 10```
 
 
 Answer:
@@ -141,7 +141,7 @@ Most countries/cities had an item from the apparel category as their top order i
 
 SQL Queries:
 
-with revenue_summary as (
+```with revenue_summary as (
 	select
 		country,
 		city,
@@ -159,7 +159,7 @@ with revenue_summary as (
 select country, city, round((total_revenue / site_revenue), 5) * 100 as percent_of_total_revenue
 from revenue_summary
 group by country, city, (total_revenue / site_revenue)
-order by (total_revenue / site_revenue) desc
+order by (total_revenue / site_revenue) desc```
 
 
 Answer:

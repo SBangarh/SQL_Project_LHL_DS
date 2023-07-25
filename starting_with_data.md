@@ -4,13 +4,13 @@ Question 1: What are the number of unique visitors for each channel group?
 
 SQL Queries:
 
-/* select 
+``` select 
 		distinct channel_grouping as channel_group,
 		count(full_visitor_id) as num_unique_visitors
 	from analytics_view
 	group by channel_grouping
 	order by count(full_visitor_id) desc
- */
+ ```
 
 
 Answer: 
@@ -22,7 +22,7 @@ Question 2: Is there any appearance of a relationship between the number of prod
 
 SQL Queries:
 
-/* select 
+``` select 
 	srv.product_sku,
 	srv.product_name,
 	product_category,
@@ -39,7 +39,7 @@ where units_sold > 0
 group by srv.product_sku, srv.product_name, product_category, units_sold, sentiment_score, sentiment_magnitude, ratio
 order by units_sold desc
 
- */
+ ```
 
 
 
@@ -54,7 +54,7 @@ Question 3: What was the total revenue by year and location?
 
 SQL Queries:
 
-/* select
+``` select
 	country,
 	city,
 	extract(year from asv.date) as year,
@@ -65,7 +65,7 @@ on av.full_visitor_id = asv.full_visitor_id
 where units_sold > 0
 group by country, city,  extract(year from asv.date)
 order by year, revenue desc
-*/
+```
 
 
 Answer:
@@ -76,7 +76,7 @@ Question 4: how many visitors per country per year?
 
 SQL Queries:
 
-/* select 
+``` select 
 	country, 
 	extract(year from asv.date) as year, 
 	count(*) as num_visitors
@@ -85,7 +85,7 @@ join all_sessions_view asv
 on av.full_visitor_id = asv.full_visitor_id
 where units_sold > 0
 group by country, year
-order by year */
+order by year ```
 
 Answer:
 In 2016, there were only 22 visitors and all were from the United States. Visitors expanded globally in 2017. Canada had second most at six while the United States had 90.

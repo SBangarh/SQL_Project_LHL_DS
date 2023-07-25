@@ -31,7 +31,7 @@ Below, provide the SQL queries you used to clean your data.
 
 All Sessions:
 
-/*create or replace view all_sessions_view as (
+```create or replace view all_sessions_view as (
 	with cte_alv as (
 		select 
 			full_visitor_id,
@@ -57,11 +57,11 @@ All Sessions:
 	select *
 	from cte_alv
 	where row_cte_alv = 1
-)  */
+)  ```
 
 Analytics:
 
-/* create or replace view analytics_view as (
+``` create or replace view analytics_view as (
 	with cte_analytics as (
 		select
 			full_visitor_id,
@@ -78,7 +78,7 @@ Analytics:
 	select *
 	from cte_analytics
 	where row_cte_analytics = 1
-) */
+) ```
 
 
 
@@ -86,7 +86,7 @@ Analytics:
 
 Products:
 
-/* create or replace view products_view as (
+``` create or replace view products_view as (
 	with cte_products as(
 		select
 			product_sku,
@@ -102,12 +102,12 @@ Products:
 	select *
 	from cte_products
 	where row_products_view = 1
-) */
+) ```
 
 
 Sales by Sku (sbs):
 
-/* create or replace view sbs_view as (
+``` create or replace view sbs_view as (
 	with cte_sbs as (
 		select 
 			product_sku,
@@ -118,12 +118,11 @@ Sales by Sku (sbs):
 	select *
 	from cte_sbs
 	where row_sbs_view = 1
-)
-*/
+)```
 
 Sales Report (sr):
 
-/* create or replace view sr_view as (
+``` create or replace view sr_view as (
 	with cte_sr as (
 		select
 			product_sku,
@@ -142,4 +141,4 @@ Sales Report (sr):
 	select *
 	from cte_sr
 	where row_cte_sr = 1
-)*/
+)```

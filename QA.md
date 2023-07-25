@@ -12,12 +12,12 @@ Describe your QA process and include the SQL queries used to execute it.
 
 All Sessions:
 
-/* select full_visitor_id, visit_id, count(*)
+``` select full_visitor_id, visit_id, count(*)
 from all_sessions_view
 group by full_visitor_id, visit_id
-having count(*) > 1 */
+having count(*) > 1 ```
 
-/* select country, city, product_sku, product_name, product_category
+``` select country, city, product_sku, product_name, product_category
 from all_sessions_view
 where country is null 
 	or city is null
@@ -25,12 +25,13 @@ where country is null
 	or product_name is null 
 	or product_category is null
 group by country, city, product_sku, product_name, product_category
- */
+ ```
 
-/* select distinct count(product_category)
+``` select distinct count(product_category)
 from all_sessions_view
 where product_category like '%/%' 
-*/ ** ‘/’ should not be present, but I could not figure out how to properly clean the categories when some were nested and others weren’t.
+``` 
+** ‘/’ should not be present, but I could not figure out how to properly clean the categories when some were nested and others weren’t.
 
 
 
@@ -47,27 +48,27 @@ where product_category like '%/%'
 
 Analytics:
 
-/* select full_visitor_id, visit_id, count(*)
+``` select full_visitor_id, visit_id, count(*)
 from analytics_view
 group by full_visitor_id, visit_id
-having count(*) > 1 */
+having count(*) > 1 ```
 
-/* select units_sold, price
+``` select units_sold, price
 from analytics_view
-where units_sold is null or price is null */
+where units_sold is null or price is null ```
 
-/* select full_visitor_id, visit_id
+``` select full_visitor_id, visit_id
 from analytics_view
-where full_visitor_id is null or visit_id is null */
+where full_visitor_id is null or visit_id is null ```
 
 Products:
 
-/* select product_sku, count(*)
+``` select product_sku, count(*)
 from products_view
 group by product_sku
-having count(*) > 1 */
+having count(*) > 1 ```
 
-/* select *
+``` select *
 from products_view
 where product_sku is null
 	or product_name is null
@@ -75,24 +76,24 @@ where product_sku is null
 	or stock_level is null
 	or restocking_lead_time is null
 	or sentiment_score is null
-	or sentiment_magnitude is null */
+	or sentiment_magnitude is null ```
 
-/* select product_name
+``` select product_name
 from products_view
-where product_name like ' ' */
+where product_name like ' ' ```
 
 
 Sales by SKU:
 
-/* select product_sku, count(*)
+``` select product_sku, count(*)
 from sbs_view
 group by product_sku
-having count(*) > 1 */
+having count(*) > 1 ```
 
-/* select *
+``` select *
 from sbs_view
 where product_sku is null
-	or total_ordered is null */
+	or total_ordered is null ```
 
 
 
@@ -101,12 +102,12 @@ where product_sku is null
 
 Sales Report:
 
-/* select product_sku, count(*)
+``` select product_sku, count(*)
 from sr_view
 group by product_sku
-having count(*) > 1 */
+having count(*) > 1 ```
 
-/* select *
+``` select *
 from sr_view
 where product_sku is null
 	or total_ordered is null
@@ -114,6 +115,6 @@ where product_sku is null
 	or stock_level is null
 	or sentiment_score is null
 	or sentiment_magnitude is null
-	or ratio is null */
+	or ratio is null ```
 
 
